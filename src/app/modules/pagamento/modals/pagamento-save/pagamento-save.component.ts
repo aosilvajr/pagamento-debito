@@ -52,8 +52,6 @@ export class PagamentoSaveComponent implements OnInit {
 
     metodoPagamentoControl.valueChanges.pipe(distinctUntilChanged()).subscribe({
       next: metodoPagamento => {
-        console.log(metodoPagamento);
-
         if (
           metodoPagamento === MetodoPagamento.CARTAO_CREDITO ||
           metodoPagamento === MetodoPagamento.CARTAO_DEBITO

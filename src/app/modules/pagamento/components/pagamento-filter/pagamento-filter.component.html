@@ -1,0 +1,70 @@
+<form class="mb-2" [formGroup]="form">
+  <div class="row">
+    <div class="col-12 col-lg-4">
+      <label class="form-label"> Identificador </label>
+
+      <div class="input-group has-validation">
+        <input
+          class="form-control"
+          [formControlName]="'id'"
+          [class.is-invalid]="controls.id.touched && controls.id.invalid" />
+
+        <div class="invalid-feedback">
+          {{ controls.id | errorMessage }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+      <label class="form-label"> CPF/CNPJ </label>
+
+      <div class="input-group has-validation">
+        <input
+          class="form-control"
+          [formControlName]="'cpfCnpj'"
+          [class.is-invalid]="
+            controls.cpfCnpj.touched && controls.cpfCnpj.invalid
+          " />
+
+        <div class="invalid-feedback">
+          {{ controls.cpfCnpj | errorMessage }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+      <label class="form-label"> Situacao </label>
+
+      <div class="input-group has-validation">
+        <select
+          class="form-select"
+          [formControlName]="'situacao'"
+          [class.is-invalid]="
+            controls.situacao.touched && controls.situacao.invalid
+          ">
+          <option *ngFor="let option of situacaoOptions" [value]="option.value">
+            {{ option.label }}
+          </option>
+        </select>
+
+        <div class="invalid-feedback">
+          {{ controls.situacao | errorMessage }}
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="row justify-content-end">
+  <div class="col-sm-auto">
+    <button type="button" class="btn btn-primary" (click)="filterForm()">
+      Filtrar
+    </button>
+  </div>
+
+  <div class="col-sm-auto">
+    <button type="button" class="btn btn-secondary" (click)="cleanForm()">
+      Limpar
+    </button>
+  </div>
+</div>

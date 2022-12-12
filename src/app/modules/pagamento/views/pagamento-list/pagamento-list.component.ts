@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Pagamento } from 'src/app/modules/pagamento/models/pagamento';
 import { PagamentoSaveComponent } from '../../modals/pagamento-save/pagamento-save.component';
 import { PagamentoService } from '../../services/pagamento/pagamento.service';
@@ -11,7 +11,7 @@ import { PagamentoService } from '../../services/pagamento/pagamento.service';
   styleUrls: ['./pagamento-list.component.scss'],
 })
 export class PagamentoListComponent implements OnInit {
-  public pagamentos$!: Observable<Pagamento[]>;
+  public pagamentos$: Observable<Pagamento[]> = of([]);
 
   constructor(
     private pagamentoService: PagamentoService,
@@ -20,7 +20,22 @@ export class PagamentoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPagamentos();
-    this.openPagamentoSaveModal();
+  }
+
+  public clean() {
+    this.pagamentos$ = of([]);
+  }
+
+  public filter(params: any) {
+    this.loadPagamentos(params);
+  }
+
+  public deletePagamento(pagamento: Pagamento) {
+    this.pagamentoService.delete(pagamento.id).subscribe({
+      next: () => {
+        pagamento.deleted = true;
+      },
+    });
   }
 
   public openPagamentoSaveModal() {
@@ -37,7 +52,7 @@ export class PagamentoListComponent implements OnInit {
     pagamento && this.loadPagamentos();
   }
 
-  private loadPagamentos() {
-    this.pagamentos$ = this.pagamentoService.get();
+  private loadPagamentos(params?: any) {
+    this.pagamentos$ = this.pagamentoService.search(params);
   }
 }

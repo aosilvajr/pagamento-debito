@@ -8,4 +8,5 @@ export type Pagamento = {
   numeroCartao: string;
   situacao: Situacao;
   valorPagamento: number;
+  deleted?: boolean;
 };

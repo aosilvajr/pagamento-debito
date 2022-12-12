@@ -4,6 +4,10 @@
     <h6 class="card-subtitle">Lista com todos os pagamentos recebidos.</h6>
   </div>
 
+  <app-pagamento-filter
+    (filter)="filter($event)"
+    (clean)="clean()"></app-pagamento-filter>
+
   <div class="row mt-4">
     <div class="col">
       <button
@@ -29,35 +33,40 @@
         </tr>
       </thead>
 
-      <tbody *ngIf="pagamentos$ | async as pagamentos; else vazia">
-        <tr *ngFor="let pagamento of pagamentos">
+      <tbody *ngIf="pagamentos$ | async as pagamentos">
+        <tr
+          *ngFor="let pagamento of pagamentos"
+          [class.deleted]="pagamento.deleted">
           <th>{{ pagamento.id }}</th>
           <td>{{ pagamento.cpfCnpj | cpfCnpj }}</td>
-          <td>{{ pagamento.metodoPagamento }}</td>
-          <td>{{ pagamento.numeroCartao }}</td>
+          <td>{{ pagamento.metodoPagamento | metodoPagamento }}</td>
+          <td>{{ pagamento.numeroCartao | linhaVazia }}</td>
           <td>{{ pagamento.situacao | situacao }}</td>
           <td>{{ pagamento.valorPagamento | currency : 'BRL' }}</td>
           <td>
             <div class="d-flex">
-              <button type="button" class="btn btn-sm btn-primary me-1">
+              <button
+                type="button"
+                class="btn btn-sm btn-primary me-1"
+                [disabled]="pagamento.deleted">
                 <i class="bi bi-pencil"></i>
               </button>
 
-              <button type="button" class="btn btn-sm btn-danger">
+              <button
+                type="button"
+                class="btn btn-sm btn-danger"
+                (click)="deletePagamento(pagamento)"
+                [disabled]="pagamento.deleted">
                 <i class="bi bi-trash"></i>
               </button>
             </div>
           </td>
         </tr>
-      </tbody>
 
-      <ng-template #vazia>
-        <tbody>
-          <tr>
-            <td colspan="12">Sem pagamentos...</td>
-          </tr>
-        </tbody>
-      </ng-template>
+        <tr *ngIf="!pagamentos.length">
+          <td colspan="12">Sem pagamentos...</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 

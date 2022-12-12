@@ -37,7 +37,7 @@ export class GatewayService {
       map(data => data.dados),
       tap({
         next: () => {
-          this.toastService.success('Registro gravado com sucesso.', 'Sucesso');
+          this.toastService.success('Sucesso', 'Registro gravado com sucesso.');
         },
         error: error => {
           this.handleHttpErrorResponse(error);
@@ -59,8 +59,8 @@ export class GatewayService {
       tap({
         next: () => {
           this.toastService.success(
-            'Registro atualizado com sucesso.',
-            'Sucesso'
+            'Sucesso',
+            'Registro atualizado com sucesso.'
           );
         },
         error: error => {
@@ -81,13 +81,6 @@ export class GatewayService {
       delay(1000),
       map(data => data.dados),
       tap({
-        next: results => {
-          results.length === 0 &&
-            this.toastService.warning(
-              'Registro não encontrado.',
-              'Não foram encontrados resultados para a sua busca.'
-            );
-        },
         error: error => {
           this.handleHttpErrorResponse(error);
         },
@@ -137,19 +130,23 @@ export class GatewayService {
   public delete(request: Observable<void>) {
     const modalRef = this.modalService.open(ConfirmationModalComponent, {
       size: 'md',
+      backdrop: true,
+      centered: true,
     });
 
     return from(modalRef.result).pipe(
       first(),
       delay(1000),
-      map(result => result),
+      map(result => {
+        this.loaderService.show();
+        return result;
+      }),
       switchMap(canDelete => (canDelete ? request : NEVER)),
       tap({
         next: () => {
-          this.loaderService.show();
           this.toastService.success(
-            'Registro removido com sucesso.',
-            'Sucesso'
+            'Sucesso',
+            'Registro removido com sucesso.'
           );
         },
         error: error => {

@@ -41,8 +41,8 @@
       }
     }
 
-    .row-deleted {
-      color: var(--bs-secondary);
+    .deleted {
+      color: var(--bs-danger);
       text-decoration: line-through;
     }
   }

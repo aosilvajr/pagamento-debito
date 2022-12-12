@@ -14,7 +14,7 @@ const SIDENAV_MENU: SideNav[] = [
     icon: 'bi bi-credit-card',
     children: [
       {
-        name: 'Lista de Pagamentos',
+        name: 'Pagamentos Recebidos',
         url: 'pagamento-debito',
       },
     ],
