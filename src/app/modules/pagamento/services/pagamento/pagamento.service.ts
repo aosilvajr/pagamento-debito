@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { CrudService } from 'src/app/core/services/crud/crud.service';
+import { Pagamento } from 'src/app/modules/models/pagamento';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class PagamentoService {
-
-  constructor() { }
+export class PagamentoService extends CrudService<Pagamento> {
+  constructor() {
+    super('/payment');
+  }
 }

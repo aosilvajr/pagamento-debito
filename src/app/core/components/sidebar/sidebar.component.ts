@@ -14,11 +14,11 @@ const SIDENAV_MENU: SideNav[] = [
     icon: 'bi bi-credit-card',
     children: [
       {
-        name: 'Receber Pagamento',
-        url: 'debito',
+        name: 'Lista de Pagamentos',
+        url: 'pagamento-debito',
       },
     ],
-  }
+  },
 ];
 
 @Component({

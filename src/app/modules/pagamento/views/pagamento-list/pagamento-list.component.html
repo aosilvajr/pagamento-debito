@@ -1,0 +1,61 @@
+<div class="card">
+  <div class="mb-4">
+    <h5 class="card-title">Pagamento</h5>
+    <h6 class="card-subtitle">Lista de pagamentos</h6>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <button type="button" class="btn btn-primary">Receber Pagamento</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Identificação</th>
+          <th scope="col">CPF/CNPJ</th>
+          <th scope="col">Metodo Pagamento</th>
+          <th scope="col">Numero Cartão</th>
+          <th scope="col">Situação</th>
+          <th scope="col">Valor Pagamento</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngIf="pagamentos$ | async as pagamentos; else vazia">
+          <ng-container *ngFor="let pagamento of pagamentos">
+            <th>{{ pagamento.id }}</th>
+            <td>{{ pagamento.cpfCnpj }}</td>
+            <td>{{ pagamento.metodoPagamento }}</td>
+            <td>{{ pagamento.numeroCartao }}</td>
+            <td>{{ pagamento.situacao }}</td>
+            <td>{{ pagamento.valorPagamento | currency : 'BRL' }}</td>
+            <td>
+              <div class="d-flex">
+                <button type="button" class="btn btn-sm btn-primary me-1">
+                  <i class="bi bi-pencil"></i>
+                </button>
+
+                <button type="button" class="btn btn-sm btn-danger">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+        </tr>
+
+        <ng-template #vazia>
+          <tr>
+            <td colspan="12">Sem pagamentos...</td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- <app-pagination #pagination [collectionSize]="credito.limites.length"> -->
+  <!-- </app-pagination> -->
+</div>
