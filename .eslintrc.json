@@ -10,13 +10,14 @@
       ],
       "extends": [
         "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
         "plugin:@angular-eslint/recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
-        "plugin:prettier/recommended"
       ],
       "plugins": ["prettier", "eslint-plugin-import-helpers"],
       "rules": {
+        "no-console": "error",
         "prettier/prettier": "error",
         "import-helpers/order-imports": [
           "warn",
