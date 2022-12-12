@@ -1,0 +1,49 @@
+<div class="sidebar">
+  <div class="navbar">
+    <a class="navbar-brand" href="#">
+      <img src="assets/banpara-logo-branca.svg" alt="" />
+    </a>
+  </div>
+
+  <div class="main-profile">
+    <div class="image-bx">
+      <img
+        src="https://as2.ftcdn.net/v2/jpg/03/49/49/79/1000_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg"
+        alt="" />
+      <a href="#"><i class="bi bi-gear"></i></a>
+    </div>
+
+    <h5 class="name"><span>Olá,</span> XXXX</h5>
+    <p class="email">XXXX@pdcase.com.br</p>
+  </div>
+
+  <ul ngbNav class="nav-pills" orientation="vertical">
+    <li
+      ngbNavItem
+      *ngFor="let nav of sidenav"
+      routerLinkActive
+      #rla="routerLinkActive">
+      <a
+        ngbNavLink
+        (click)="collapse.toggle()"
+        [class.active-item]="!collapse.collapsed">
+        <i [class]="nav.icon"></i>
+        <span class="nav-text">{{ nav.name }}</span>
+      </a>
+
+      <ul #collapse="ngbCollapse" [ngbCollapse]="!rla.isActive">
+        <li
+          ngbNavItem
+          *ngFor="let children of nav.children"
+          (click)="toggleSideBar()">
+          <a
+            ngbNavLink
+            [routerLink]="children.url"
+            [routerLinkActive]="'active-link'">
+            {{ children.name }}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

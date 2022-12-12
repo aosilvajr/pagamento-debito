@@ -1,0 +1,50 @@
+$breakpoint-lg: 1200px;
+
+.wrapper {
+  width: calc(100% - 23rem);
+  margin-left: 23rem;
+  transition: all 0.3s ease;
+
+  .overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+    cursor: pointer;
+  }
+
+  main {
+    width: 100%;
+    padding: 1.8rem;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    width: 100%;
+    margin-left: 0;
+
+    .overlay {
+      display: block;
+    }
+  }
+}
+
+.toggle-sidebar {
+  width: 100%;
+  margin-left: 0;
+
+  ::ng-deep .sidebar {
+    left: -23rem;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    .overlay {
+      display: none;
+    }
+  }
+}

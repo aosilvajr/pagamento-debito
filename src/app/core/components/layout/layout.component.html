@@ -1,0 +1,13 @@
+<div class="wrapper" [class.toggle-sidebar]="toggleSidebar">
+  <div class="overlay" (click)="toggleSideBar()"></div>
+
+  <app-navbar (toggleSideBarEvent)="toggleSideBar()"></app-navbar>
+  <app-sidebar (toggleSideBarEvent)="closeSideBar()"></app-sidebar>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<app-loading-screen></app-loading-screen>
+<app-toast aria-live="polite" aria-atomic="true"></app-toast>

@@ -1,0 +1,98 @@
+.loader-container {
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(0.4rem);
+
+  img {
+    width: 16rem;
+  }
+
+  .dot-pulse {
+    position: relative;
+    left: -9999px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--bs-light);
+    color: var(--bs-light);
+    box-shadow: 9999px 0 0 -5px var(--bs-light);
+    animation: dotPulse 1.5s infinite linear;
+    animation-delay: 0.25s;
+  }
+
+  .dot-pulse::before,
+  .dot-pulse::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--bs-light);
+    color: var(--bs-light);
+  }
+
+  .dot-pulse::before {
+    box-shadow: 9984px 0 0 -5px var(--bs-light);
+    animation: dotPulseBefore 1.5s infinite linear;
+    animation-delay: 0s;
+  }
+
+  .dot-pulse::after {
+    box-shadow: 10014px 0 0 -5px var(--bs-light);
+    animation: dotPulseAfter 1.5s infinite linear;
+    animation-delay: 0.5s;
+  }
+
+  @keyframes dotPulseBefore {
+    0% {
+      box-shadow: 9984px 0 0 -5px var(--bs-light);
+    }
+    30% {
+      box-shadow: 9984px 0 0 2px var(--bs-light);
+    }
+    60%,
+    100% {
+      box-shadow: 9984px 0 0 -5px var(--bs-light);
+    }
+  }
+
+  @keyframes dotPulse {
+    0% {
+      box-shadow: 9999px 0 0 -5px var(--bs-light);
+    }
+    30% {
+      box-shadow: 9999px 0 0 2px var(--bs-light);
+    }
+    60%,
+    100% {
+      box-shadow: 9999px 0 0 -5px var(--bs-light);
+    }
+  }
+
+  @keyframes dotPulseAfter {
+    0% {
+      box-shadow: 10014px 0 0 -5px var(--bs-light);
+    }
+    30% {
+      box-shadow: 10014px 0 0 2px var(--bs-light);
+    }
+    60%,
+    100% {
+      box-shadow: 10014px 0 0 -5px var(--bs-light);
+    }
+  }
+}
