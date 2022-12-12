@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CrudService } from 'src/app/core/services/crud/crud.service';
-import { Pagamento } from 'src/app/modules/models/pagamento';
+import { Pagamento } from 'src/app/modules/pagamento/models/pagamento';
 
 @Injectable({
   providedIn: 'root',

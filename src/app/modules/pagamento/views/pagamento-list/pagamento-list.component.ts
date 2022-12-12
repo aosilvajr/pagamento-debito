@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
-import { Pagamento } from 'src/app/modules/models/pagamento';
+import { Pagamento } from 'src/app/modules/pagamento/models/pagamento';
+import { PagamentoSaveComponent } from '../../modals/pagamento-save/pagamento-save.component';
 import { PagamentoService } from '../../services/pagamento/pagamento.service';
 
 @Component({
@@ -11,10 +13,28 @@ import { PagamentoService } from '../../services/pagamento/pagamento.service';
 export class PagamentoListComponent implements OnInit {
   public pagamentos$!: Observable<Pagamento[]>;
 
-  constructor(private pagamentoService: PagamentoService) {}
+  constructor(
+    private pagamentoService: PagamentoService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
     this.loadPagamentos();
+    this.openPagamentoSaveModal();
+  }
+
+  public openPagamentoSaveModal() {
+    const modalRef = this.modalService.open(PagamentoSaveComponent, {
+      size: 'xl',
+      backdrop: true,
+      centered: true,
+    });
+
+    modalRef.result.then(pagamento => this.atualizaPagamentos(pagamento));
+  }
+
+  private atualizaPagamentos(pagamento: Pagamento) {
+    pagamento && this.loadPagamentos();
   }
 
   private loadPagamentos() {
