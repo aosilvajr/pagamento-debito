@@ -10,25 +10,15 @@ import { SideNav } from '../../models/sidenav';
 
 const SIDENAV_MENU: SideNav[] = [
   {
-    name: 'Concessão de Crédito',
+    name: 'Débitos',
     icon: 'bi bi-credit-card',
     children: [
       {
-        name: 'Operações de Crédito',
-        url: 'operacoes-credito',
+        name: 'Receber Pagamento',
+        url: 'debito',
       },
     ],
-  },
-  {
-    name: 'Fomento',
-    icon: 'bi bi-cash-coin',
-    children: [
-      {
-        name: 'Operações SICOR',
-        url: 'fomento',
-      },
-    ],
-  },
+  }
 ];
 
 @Component({

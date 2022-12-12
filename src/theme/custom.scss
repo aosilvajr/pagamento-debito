@@ -1,0 +1,41 @@
+.nav-tabs {
+  .nav-item {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+  }
+}
+
+.table-responsive {
+  margin-top: 2rem;
+
+  table {
+    thead {
+      th {
+        font-size: 1.1rem;
+      }
+    }
+
+    tbody {
+      td,
+      th {
+        font-size: 1.1rem;
+        vertical-align: middle;
+      }
+
+      tr {
+        &:hover {
+          cursor: pointer;
+          background-color: rgba(94, 86, 105, 0.04);
+        }
+      }
+    }
+
+    .row-deleted {
+      color: var(--bs-secondary);
+      text-decoration: line-through;
+    }
+  }
+}

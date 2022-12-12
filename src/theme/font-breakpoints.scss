@@ -1,0 +1,48 @@
+// XXX-Small devices (portrait phones, less than 280px)
+@media (min-width: 280px) {
+  html {
+    font-size: 68.75%; //11px
+  }
+}
+
+// X-Small devices (portrait phones, less than 576px)
+@media (min-width: 320px) {
+  html {
+    font-size: 75%; //12px
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  html {
+    font-size: 75%; //12px
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  html {
+    font-size: 87.5%; //14px
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  html {
+    font-size: 75%; //12px
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  html {
+    font-size: 75%; //12px
+  }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+  html {
+    font-size: 75%; //12px
+  }
+}

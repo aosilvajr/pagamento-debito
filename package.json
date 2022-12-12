@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open --proxy-config proxy.conf.json --port 3300",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
     "prepare": "husky install && chmod ug+x .husky/*"
   },
   "private": true,
@@ -23,6 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^14.0.0",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
