@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
+import { CpfCnpjValidator } from 'src/app/shared/validators/cpf-cnpj';
 import { Situacao, SituacaoSelect } from '../../models/situacao';
 
 @Component({
@@ -15,7 +16,7 @@ export class PagamentoFilterComponent {
 
   public form = this.formBuilder.group({
     id: [null as number | null],
-    cpfCnpj: [''],
+    cpfCnpj: ['', [CpfCnpjValidator.cpfCnpj()]],
     situacao: [Situacao.PENDENTE],
   });
 

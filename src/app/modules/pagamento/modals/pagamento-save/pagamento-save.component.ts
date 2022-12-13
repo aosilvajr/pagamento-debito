@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { distinctUntilChanged } from 'rxjs';
+import { CpfCnpjValidator } from 'src/app/shared/validators/cpf-cnpj';
 import {
   MetodoPagamento,
   MetodoPagamentoSelect,
@@ -16,7 +17,7 @@ import { PagamentoService } from '../../services/pagamento/pagamento.service';
 })
 export class PagamentoSaveComponent implements OnInit {
   public form = this.formBuilder.group({
-    cpfCnpj: ['', [Validators.required]],
+    cpfCnpj: ['', [Validators.required, CpfCnpjValidator.cpfCnpj()]],
     metodoPagamento: [MetodoPagamento.BOLETO, [Validators.required]],
     numeroCartao: [null as string | null, [Validators.required]],
     valorPagamento: [0, [Validators.required]],

@@ -34,7 +34,8 @@ export class ErrorMessagePipe implements PipeTransform {
 
   private getMessage(validatorName: string, validatorValue: any): string {
     const messages: { [key: string]: string } = {
-      required: `Campo obrigatório.`,
+      cpfCnpj: 'CPF ou CNPJ informado é inválido',
+      required: 'Campo obrigatório.',
       select: 'Error ao carregar as opções',
       autocomplete: 'Opção selecionada não existe',
       min: `Precisa ter no mínimo ${validatorValue.min}`,
