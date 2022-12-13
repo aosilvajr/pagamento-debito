@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, of } from 'rxjs';
 import { Pagamento } from 'src/app/modules/pagamento/models/pagamento';
 import { PagamentoSaveComponent } from '../../modals/pagamento-save/pagamento-save.component';
+import { PagamentoUpdateComponent } from '../../modals/pagamento-update/pagamento-update.component';
 import { PagamentoService } from '../../services/pagamento/pagamento.service';
 
 @Component({
@@ -45,6 +46,16 @@ export class PagamentoListComponent implements OnInit {
       centered: true,
     });
 
+    modalRef.result.then(pagamento => this.atualizaPagamentos(pagamento));
+  }
+
+  public openPagamentoUpdateModal(pagamento: Pagamento) {
+    const modalRef = this.modalService.open(PagamentoUpdateComponent, {
+      backdrop: true,
+      centered: true,
+    });
+
+    modalRef.componentInstance.pagamento = pagamento;
     modalRef.result.then(pagamento => this.atualizaPagamentos(pagamento));
   }
 

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
-import { Situacao, SitucaoSelect } from '../../models/situacao';
+import { Situacao, SituacaoSelect } from '../../models/situacao';
 
 @Component({
   selector: 'app-pagamento-filter',
@@ -19,7 +19,7 @@ export class PagamentoFilterComponent {
     situacao: [Situacao.PENDENTE],
   });
 
-  public situacaoOptions = SitucaoSelect.options;
+  public situacaoOptions = SituacaoSelect.options;
 
   constructor(private formBuilder: NonNullableFormBuilder) {}
 

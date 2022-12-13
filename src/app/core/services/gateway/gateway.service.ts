@@ -159,47 +159,48 @@ export class GatewayService {
     );
   }
 
-  private handleHttpErrorResponse(error: HttpErrorResponse) {
+  private handleHttpErrorResponse(httpErrorResponse: HttpErrorResponse) {
     let errorMsg: string;
 
-    if (error.error instanceof ErrorEvent) {
-      errorMsg = `Error: ${error.error.message}`;
+    if (httpErrorResponse.error.erro) {
+      errorMsg = `Error: ${httpErrorResponse.error.erro}`;
+      this.toastService.error('Ooops! Algo deu errado.', errorMsg);
     } else {
-      errorMsg = this.getServerErrorMessage(error);
+      errorMsg = this.getServerErrorMessage(httpErrorResponse);
     }
 
     return throwError(() => new Error(errorMsg));
   }
 
-  private getServerErrorMessage(error: HttpErrorResponse): string {
-    switch (error.status) {
+  private getServerErrorMessage(httpErrorResponse: HttpErrorResponse): string {
+    switch (httpErrorResponse.status) {
       case 404: {
         this.toastService.error(
-          'Algo deu errado!!',
-          'Rota de servidor não encontrada ou desconhecida.'
+          'Ooops! Algo deu errado.',
+          'Rota de servidor não encontrada ou desconhecida. tente novamente mais tarde.'
         );
-        return `Not Found: ${error.message}`;
+        return `Not Found: ${httpErrorResponse.message}`;
       }
       case 500: {
         this.toastService.error(
-          'Algo deu errado!!',
-          'Erro interno de comunicação com o servidor.'
+          'Ooops! Algo deu errado.',
+          'Erro interno de comunicação com o servidor. tente novamente mais tarde.'
         );
-        return `Internal Server Error: ${error.message}`;
+        return `Internal Server Error: ${httpErrorResponse.message}`;
       }
       case 504: {
         this.toastService.error(
-          'Algo deu errado!!',
-          'Tempo de processamento esgotado, tente novamente mais tarde.'
+          'Ooops! Algo deu errado.',
+          'Tempo de processamento do servidor esgotado, tente novamente mais tarde.'
         );
-        return `Gateway Timeout: ${error.message}`;
+        return `Gateway Timeout: ${httpErrorResponse.message}`;
       }
       default: {
         this.toastService.error(
-          'Algo deu errado!!',
+          'Ooops! Algo deu errado.',
           'Erro desconhecido. Tente novamente mais tarde.'
         );
-        return `Unknown Server Error: ${error.message}`;
+        return `Unknown Server Error: ${httpErrorResponse.message}`;
       }
     }
   }

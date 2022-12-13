@@ -6,13 +6,15 @@ import { PagamentoListComponent } from './views/pagamento-list/pagamento-list.co
 import { PagamentoSaveComponent } from './modals/pagamento-save/pagamento-save.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PagamentoFilterComponent } from './components/pagamento-filter/pagamento-filter.component';
+import { PagamentoUpdateComponent } from './modals/pagamento-update/pagamento-update.component';
 
 
 @NgModule({
   declarations: [
     PagamentoListComponent,
     PagamentoSaveComponent,
-    PagamentoFilterComponent
+    PagamentoFilterComponent,
+    PagamentoUpdateComponent
   ],
   imports: [
     CommonModule,

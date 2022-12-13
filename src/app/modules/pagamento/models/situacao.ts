@@ -4,7 +4,7 @@ export enum Situacao {
   FALHA = 'FALHA',
 }
 
-export abstract class SitucaoSelect {
+export abstract class SituacaoSelect {
   static readonly options = [
     { label: 'Pendente', value: Situacao.PENDENTE },
     { label: 'Sucesso', value: Situacao.SUCESSO },
