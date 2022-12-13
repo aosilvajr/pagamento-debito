@@ -2,7 +2,7 @@
   <ngb-toast
     *ngFor="let toast of toasts"
     [class]="toast.classname"
-    [delay]="toast.delay || 5000"
+    [delay]="toast.delay || 10000"
     [autohide]="true"
     (hidden)="remove(toast)">
     <ng-template ngbToastHeader>

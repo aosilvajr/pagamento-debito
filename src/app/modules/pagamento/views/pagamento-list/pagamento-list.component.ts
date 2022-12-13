@@ -42,7 +42,7 @@ export class PagamentoListComponent implements OnInit {
   public openPagamentoSaveModal() {
     const modalRef = this.modalService.open(PagamentoSaveComponent, {
       size: 'xl',
-      backdrop: true,
+      backdrop: 'static',
       centered: true,
     });
 
@@ -51,7 +51,7 @@ export class PagamentoListComponent implements OnInit {
 
   public openPagamentoUpdateModal(pagamento: Pagamento) {
     const modalRef = this.modalService.open(PagamentoUpdateComponent, {
-      backdrop: true,
+      backdrop: 'static',
       centered: true,
     });
 

@@ -19,7 +19,15 @@ export class PagamentoSaveComponent implements OnInit {
   public form = this.formBuilder.group({
     cpfCnpj: ['', [Validators.required, CpfCnpjValidator.cpfCnpj()]],
     metodoPagamento: [MetodoPagamento.BOLETO, [Validators.required]],
-    numeroCartao: [null as string | null, [Validators.required]],
+    numeroCartao: [
+      null as string | null,
+      [
+        Validators.required,
+        Validators.pattern('^[0-9]*$'),
+        Validators.minLength(16),
+        Validators.maxLength(16),
+      ],
+    ],
     valorPagamento: [0, [Validators.required]],
   });
 
@@ -59,6 +67,8 @@ export class PagamentoSaveComponent implements OnInit {
         ) {
           numeroCartaoControl.reset();
           numeroCartaoControl.disable();
+        } else {
+          numeroCartaoControl.enable();
         }
       },
     });

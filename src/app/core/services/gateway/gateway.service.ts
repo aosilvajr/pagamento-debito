@@ -130,7 +130,7 @@ export class GatewayService {
   public delete(request: Observable<void>) {
     const modalRef = this.modalService.open(ConfirmationModalComponent, {
       size: 'md',
-      backdrop: true,
+      backdrop: 'static',
       centered: true,
     });
 
@@ -138,7 +138,6 @@ export class GatewayService {
       first(),
       delay(1000),
       map(result => {
-        this.loaderService.show();
         return result;
       }),
       switchMap(canDelete => (canDelete ? request : NEVER)),
@@ -162,7 +161,7 @@ export class GatewayService {
   private handleHttpErrorResponse(httpErrorResponse: HttpErrorResponse) {
     let errorMsg: string;
 
-    if (httpErrorResponse.error.erro) {
+    if (httpErrorResponse.error?.erro) {
       errorMsg = `Error: ${httpErrorResponse.error.erro}`;
       this.toastService.error('Ooops! Algo deu errado.', errorMsg);
     } else {
